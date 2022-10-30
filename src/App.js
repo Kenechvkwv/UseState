@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const [toggle, setToggle] = useState(false);
+
+  const incrementer = () => {
+    setCounter((prev) => prev + 1);
+    //or
+    // setCounter(counter + 2);
+    // console.log(counter);
+  };
+
+  const toggler = () => {
+    setToggle((prev) => !prev);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className={toggle ? "active" : ""}>Hello React</h1>
+      <h2>Counter {counter}</h2>
+      <button onClick={incrementer}>Click</button>
+      <button onClick={toggler}>Toggle</button>
     </div>
   );
 }
